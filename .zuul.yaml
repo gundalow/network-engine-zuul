@@ -3,4 +3,4 @@
       debug: True
       jobs:
         - tox-linters
-        - ansible-test-network-engine
+        - ansible-role-tests
