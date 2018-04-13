@@ -4,7 +4,7 @@
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 #
 # You should have received a copy of the GNU General Public License
-# GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
+# along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
 from __future__ import (absolute_import, division, print_function)
 __metaclass__ = type
@@ -39,7 +39,7 @@ class ActionModule(ActionBase):
             try:
                 filename = self._task.args.get('file')
                 src = self._task.args.get('src')
-                contents = self._task.args['contents']
+                content = self._task.args['content']
                 name = self._task.args.get('name')
             except KeyError as exc:
                 raise AnsibleError('missing required argument: %s' % exc)
@@ -56,7 +56,7 @@ class ActionModule(ActionBase):
 
             try:
                 re_table = textfsm.TextFSM(tmpl)
-                fsm_results = re_table.ParseText(contents)
+                fsm_results = re_table.ParseText(content)
 
             except Exception as exc:
                 raise AnsibleError(str(exc))

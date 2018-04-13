@@ -31,43 +31,40 @@ options:
       - Path to the TextFSM parser to use to parse the output from a command.
         The C(file) argument accepts either a relative or absolute path
         to the TextFSM file.
-    required: false
     default: null
   src:
     description:
-      - The C(src) argument can be used to load the contents of a TextFSM
+      - The C(src) argument can be used to load the content of a TextFSM
         parser file.  This argument allow the TextFSM parser to be loaded
         from an external source.  See EXAMPLES.
-    required: false
     default: null
-  contents:
+  content:
     description:
       - The output of the command to parse using the rules in the TextFSM
-        file.  The contents should be a text string.
+        file.  The content should be a text string.
     required: true
   name:
     description:
       - The C(name) argument is used to define the top-level fact name to
         hold the output of the parser.  If this argument is not provided,
         the output from parsing will not be exported.
-    required: false
     default: null
 '''
 
 EXAMPLES = '''
-- name: parse the contents of a command
+- name: parse the content of a command
   textfsm:
-    parser: files/parsers/show_interface.yaml
-    contents: "{{ lookup('file', 'output/show_interfaces.txt') }}"
+    file: files/parsers/show_interface.yaml
+    content: "{{ lookup('file', 'output/show_interfaces.txt') }}"
 
 - name: store returned facts into a key call output
   textfsm:
-    parser: files/parsers/show_interface.yaml
-    contents: "{{ lookup('file', 'output/show_interfaces.txt') }}"
+    file: files/parsers/show_interface.yaml
+    content: "{{ lookup('file', 'output/show_interfaces.txt') }}"
     name: output
 
 - name: read the parser from an url
   textfsm:
     src: "{{ lookup('url', 'http://server/path/to/parser') }}"
-    contents: "{{ lookup('file', 'output/show_interfaces.txt') }}"
+    content: "{{ lookup('file', 'output/show_interfaces.txt') }}"
 '''
