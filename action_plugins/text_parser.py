@@ -148,7 +148,7 @@ class ActionModule(ActionBase):
                                     if register not in facts:
                                         facts[register] = {}
                                     for item in res:
-                                        facts[register].update(item)
+                                        facts[register] = self.rec_update(facts[register], item)
                                 else:
                                     facts[register] = res
                 else:
@@ -201,6 +201,14 @@ class ActionModule(ActionBase):
 
         return include_files
 
+    def rec_update(self, d, u):
+        for k, v in iteritems(u):
+            if isinstance(v, collections.Mapping):
+                d[k] = self.rec_update(d.get(k, {}), v)
+            else:
+                d[k] = v
+        return d
+
     def do_pattern_group(self, block):
 
         results = list()
@@ -216,7 +224,7 @@ class ActionModule(ActionBase):
 
             when = task.pop('when', None)
             if when is not None:
-                if not self._check_conditional(when):
+                if not self._check_conditional(when, self.ds):
                     warning('skipping task due to conditional check failure')
                     continue
 
