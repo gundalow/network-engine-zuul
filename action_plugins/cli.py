@@ -4,6 +4,9 @@
 # You should have received a copy of the GNU General Public License
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 #
+from __future__ import (absolute_import, division, print_function)
+__metaclass__ = type
+
 import json
 
 from ansible.plugins.action import ActionBase
@@ -55,7 +58,7 @@ class ActionModule(ActionBase):
             new_task = self._task.copy()
             new_task.args = {
                 'file': parser,
-                'contents': (json_data or output)
+                'content': (json_data or output)
             }
 
             kwargs = {
@@ -74,7 +77,7 @@ class ActionModule(ActionBase):
 
         # this is needed so the strategy plugin can identify the connection as
         # a persistent connection and track it, otherwise the connection will
-        # not be closed at th end of the play
+        # not be closed at the end of the play
         socket_path = getattr(self._connection, 'socket_path') or task_vars.get('ansible_socket')
         self._task.args['_ansible_socket'] = socket_path
 
