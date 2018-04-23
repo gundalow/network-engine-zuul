@@ -1,6 +1,6 @@
 - project:
     check:
-      debug: True
       jobs:
         - tox-linters
+        - ansible-test-sanity
         - ansible-role-tests
