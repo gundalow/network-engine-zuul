@@ -4,3 +4,8 @@
         - tox-linters
         - ansible-test-sanity
         - ansible-role-tests
+    gate:
+      jobs:
+        - tox-linters
+        - ansible-test-sanity
+        - ansible-role-tests
