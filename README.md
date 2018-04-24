@@ -37,7 +37,7 @@ None
 
 ## Modules
 
-The following is a list of modules that are provided by this role.
+The following is a list of modules that are provided by this role, which include documentation & examples:
 
 * `cli` [source](https://github.com/ansible-network/network-engine/blob/devel/action_plugins/cli.py)
 * `text_parser` [source](https://github.com/ansible-network/network-engine/blob/devel/library/text_parser.py)
