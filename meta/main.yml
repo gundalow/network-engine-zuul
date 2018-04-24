@@ -1,14 +1,14 @@
 ---
 galaxy_info:
-  author: Ansible Network
-  description: This role is developed and maintained by the Ansible Network team
+  author: ansible-network
+  description: This role provides the foundation for building network roles by providing modules and plugins that are common to all Ansible Network roles.
   company: Red Hat
 
-  issue_tracker_url: http://github.com/ansible-network/network-engine/issues
+  issue_tracker_url: https://github.com/ansible-network/network-engine/issues
 
   license: GPLv3
 
-  min_ansible_version: 1.2
+  min_ansible_version: 2.5
 
   # If this a Container Enabled role, provide the minimum Ansible Container version.
   # min_ansible_container_version:
@@ -22,13 +22,16 @@ galaxy_info:
   #github_branch:
 
   platforms:
-    all
+    - name: network
+      versions:
+        - all
 
   galaxy_tags:
-    - ansible-network
+    - ansible
+    - network
     - networking
+    - engine
     - core
-    - supported
     - cli
 
 dependencies: []
