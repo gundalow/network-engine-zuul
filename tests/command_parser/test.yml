@@ -1,5 +1,4 @@
----
 - hosts: localhost
   connection: local
   roles:
-    - text_parser
+    - command_parser
