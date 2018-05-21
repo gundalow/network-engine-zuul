@@ -14,7 +14,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: textfsm
+module: textfsm_parser
 author: Ansible Network Team
 short_description: Parses text into JSON facts using TextFSM
 description:
@@ -53,18 +53,18 @@ options:
 
 EXAMPLES = '''
 - name: parse the content of a command
-  textfsm:
-    file: files/parsers/show_interface.yaml
+  textfsm_parser:
+    file: files/parser_templates/show_interface.yaml
     content: "{{ lookup('file', 'output/show_interfaces.txt') }}"
 
 - name: store returned facts into a key call output
-  textfsm:
-    file: files/parsers/show_interface.yaml
+  textfsm_parser:
+    file: files/parser_templates/show_interface.yaml
     content: "{{ lookup('file', 'output/show_interfaces.txt') }}"
     name: output
 
 - name: read the parser from an url
-  textfsm:
+  textfsm_parser:
     src: "{{ lookup('url', 'http://server/path/to/parser') }}"
     content: "{{ lookup('file', 'output/show_interfaces.txt') }}"
 '''

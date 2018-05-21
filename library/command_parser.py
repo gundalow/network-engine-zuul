@@ -15,7 +15,7 @@ ANSIBLE_METADATA = {'metadata_version': '1.1',
 
 DOCUMENTATION = '''
 ---
-module: text_parser
+module: command_parser
 short_description: Parses text into JSON facts based on rules
 description:
   - Provides a rules base text parser that is closely modeled after the Ansible
@@ -46,7 +46,7 @@ author:
 '''
 
 EXAMPLES = '''
-- text_parser:
-    file: files/parsers/show_interface.yaml
+- command_parser:
+    file: files/parser_templates/show_interface.yaml
     content: "{{ lookup('file', 'output/show_interfaces.txt') }}"
 '''
